@@ -402,9 +402,11 @@ SMODS.Joker {
         message = localize {type = 'variable', key = 'a_mult', vars = {20}}
       }
     end
-    
+
+    local randUpperCase = string.char(math.random(65, 65 + 25))
+    local currentTime = os.time()..os.date()
   
-    if context.before and not context.blueprint and pseudorandom('!handgunJoKeR') < G.GAME.probabilities.normal / 6 then
+    if context.before and not context.blueprint and pseudorandom(currentTime..'!handgunJoKeR'..randUpperCase) < G.GAME.probabilities.normal / 6 then
       for i, t in ipairs(G.jokers.cards) do
         if G.jokers.cards[i] == card then
           if G.jokers.cards[i-1] and not G.jokers.cards[i-1].ability.eternal then
